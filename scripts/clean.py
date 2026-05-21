@@ -22,6 +22,8 @@ def main() -> None:
 
     df["duration_seconds"] = pd.to_numeric(df["duration_seconds"], errors="coerce")
     df = df[df["duration_seconds"] > 0]
+    df["duration_seconds"] = df["duration_seconds"].astype(int)
+
 
     timestamps = pd.to_datetime(df["timestamp"], errors="coerce", format="mixed")
     df = df[timestamps.notna()].copy()
